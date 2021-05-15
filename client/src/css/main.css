@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "paci";
+  src: url("../font/Pacifico-Regular.ttf");
+}
+
+body {
+  background-color: #45973fec;
+}
+
+#main_body {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("../img/trees.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#main_header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 120px;
+  color: rgba(240, 240, 240, 0.9);
+  font-size: 50px;
+  font-family: "paci";
+  text-align: center;
+  line-height: 120px;
+}
+
+#main_welcome {
+  width: 500px;
+  height: 40px;
+  color: rgba(240, 240, 240, 0.9);
+  font-size: 25px;
+  font-family: "paci";
+  text-align: center;
+  margin: 15px;
+}
+
+#main_butt {
+  width: 120px;
+  height: 40px;
+  background-color: #fff067d2;
+  border-radius: 10px;
+  border: none;
+  font-size: 23px;
+  font-family: "paci";
+  line-height: 2px;
+  cursor: pointer;
+}
+
+#main_butt:hover {
+  background-color: #fff067f5;
+}

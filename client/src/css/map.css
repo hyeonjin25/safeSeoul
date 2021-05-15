@@ -1,0 +1,31 @@
+html {
+  /* 확대, 축소 금지 */
+  -ms-content-zooming: none;
+  -ms-touch-action: pan-x pan-y;
+}
+
+.bubble {
+  position: relative;
+  width: 60px;
+  height: 25px;
+  padding: 0px;
+  background: #eaeaea;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 25px;
+}
+
+.bubble:after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-width: 14px 7px 0;
+  border-color: #eaeaea transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -14px;
+  left: 22px;
+}

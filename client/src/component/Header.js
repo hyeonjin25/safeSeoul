@@ -1,17 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div style={{ backgroundColor: "#BCE55C" }}>
+    <div style={{ backgroundColor: "#45973fec" }}>
       <div
         style={{
           padding: "20px",
           textAlign: "center",
           fontSize: "30px",
           fontWeight: "bold",
+          fontFamily: "paci",
         }}
       >
-        SafeSeoul
+        <Link to={"/"}> SafeSeoul</Link>
       </div>
     </div>
   );
