@@ -4,7 +4,7 @@ import "../css/reset.css";
 import "../css/main.css";
 import arrow from "../img/right-arrow.png";
 
-function Main() {
+function MainPage() {
   return (
     <div id="main_body">
       {/* 헤더 */}
@@ -20,4 +20,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default MainPage;
