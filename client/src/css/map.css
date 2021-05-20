@@ -1,8 +1,8 @@
-html {
-  /* 확대, 축소 금지 */
+/* html {
+   확대, 축소 금지 
   -ms-content-zooming: none;
   -ms-touch-action: pan-x pan-y;
-}
+} */
 
 .bubble {
   position: relative;
