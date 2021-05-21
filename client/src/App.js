@@ -1,9 +1,9 @@
 import React from 'react';
  //import Header from "./component/Header";
  //import Footer from "./component/Footer";
-import Main from "./router/Main";
-import Map from "./router/Map";
- import Third from "./router/Third";
+import MainPage from "./router/MainPage";
+import MapPage from "./router/MapPage";
+ import DetailPage from "./router/DetailPage";
  import { BrowserRouter, Route, Switch } from "react-router-dom";
 
  function App() {
@@ -12,9 +12,9 @@ import Map from "./router/Map";
        {/* <Header />*/ }
        <div>
          <Switch>
-           <Route exact path="/" component={Main} />
-           <Route exact path="/map" component={Map} />
-           <Route exact path="/third" component={Third} />
+           <Route exact path="/" component={MainPage} />
+           <Route exact path="/map" component={MapPage} />
+           <Route exact path="/detail/:district" component={DetailPage} />
          </Switch>
        </div>
        {/* <Footer /> */}

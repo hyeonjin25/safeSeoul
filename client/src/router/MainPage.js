@@ -4,7 +4,7 @@ import "../css/reset.css";
 import "../css/main.css";
 import arrow from "../img/right-arrow.png";
 
-function Main() {
+function MainPage() {
   return (
     <div id="main_body">
       {/* 헤더 */}
@@ -13,11 +13,11 @@ function Main() {
       <Link to={"./map"}>
         <button id="main_butt">
           map
-          <img src={arrow} width="16" height="13" style={{ marginLeft: 10 }} alt="profile"/>
+          <img src={arrow} width="16" height="13" style={{ marginLeft: 10 }}alt="profile" />
         </button>{" "}
       </Link>
     </div>
   );
 }
 
-export default Main;
+export default MainPage;
