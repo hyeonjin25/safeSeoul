@@ -4,17 +4,33 @@ import "../css/reset.css";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import { useParams } from "react-router";
+import styled from "styled-components";
 
 function DetailPage() {
   const params = useParams();
 
   // 지도에서 선택한 구 이름
-  const district = params.district;
+  const districtParam = params.district;
 
+  const [district, setDistrict] = useState(districtParam);
   const [natural, setNatural] = useState("block");
   const [social, setSocial] = useState("none");
   const [naturalColor, setNaturalColor] = useState("lightgreen");
   const [socialColor, setSocialColor] = useState("rgb(239, 239, 239)");
+
+  const StyledBox = styled.div`
+    width: 750px;
+    border: 1px solid black;
+    border-radius: 15px;
+    // margin-top:-110px;
+    margin-bottom: 15px;
+    padding: 30px;
+    padding-left: 10px;
+    text-align: left;
+    fontsize: 10px;
+    font-weight: bold;
+    background-color: #d3d3d3;
+  `;
 
   const clickSo = (t) => {
     setNatural("none");
@@ -32,144 +48,22 @@ function DetailPage() {
 
   return (
     <div>
-      <Header></Header>
-      <div>
+      <Header />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "30px",
+        }}
+      >
         <div
           style={{
-            border: "0.5px solid black",
-            marginTop: "3.0%",
-            //  marginBottom:"15px",
-            marginRight: "85%",
-            marginLeft: "5%",
+            width: "200px",
             padding: "15px",
             paddingLeft: "10px",
-            textAlign: "center",
-            fontSize: "10px",
-            fontWeight: "bold",
-            backgroundColor: "#D3D3D3",
-          }}
-        >
-          메뉴
-        </div>
-        <div
-          style={{
-            // border:"0.5px solid black",
-            //marginTop:"5px",
-            marginRight: "85%",
-            marginLeft: "5%",
-            padding: "15px",
-            paddingLeft: "10px",
-            textAlign: "center",
-            fontSize: "13px",
-            fontWeight: "bold",
-            // backgroundColor:"#D3D3D3",
-          }}
-        >
-          구 선택
-        </div>
-        <div
-          style={{
-            // border:"0.5px solid black",
-            marginTop: "-17px",
-            marginRight: "85%",
-            marginLeft: "5%",
-            padding: "15px",
-            paddingLeft: "10px",
-            textAlign: "center",
-            fontSize: "13px",
-            fontWeight: "bold",
-            // backgroundColor:"#D3D3D3",
-          }}
-        >
-          <select name="guselect" size="5">
-            <option value="gangseo">강서구</option>
-            <option value="jongno">종로구</option>
-            <option value="junggu">중구</option>
-            <option value="yongsangu">용산구</option>
-            <option value="songdonggu">성동구</option>
-            <option value="gwangjingu">광진구</option>
-            <option value="ddmgu">동대문구</option>
-            <option value="jungnanggu">중랑구</option>
-            <option value="sbgu">성북구</option>
-            <option value="gangbukgu">강북구</option>
-            <option value="sdmgu">서대문구</option>
-            <option value="dobonggu">도봉구</option>
-            <option value="nowongu">노원구</option>
-            <option value="epgu">은평구</option>
-            <option value="mapogu">마포구</option>
-            <option value="yangcheongu">양천구</option>
-            <option value="gurogu">구로구</option>
-            <option value="geumcheongu">금천구</option>
-            <option value="ydpgu">영등포구</option>
-            <option value="dongjakgu">동작구</option>
-            <option value="gwanakgu">관악구</option>
-            <option value="seochogu">서초구</option>
-            <option value="gangnamgu">강남구</option>
-            <option value="songpagu">송파구</option>
-            <option value="gangdonggu">강동구</option>
-          </select>
-        </div>
-        <div
-          style={{
-            //border:"0.5px solid black",
-            // borderLeft:"0.5px solid black",
-            //borderRight:"0.5px solid black",
-            //borderBottom:"0.5px solid black",
-            marginTop: "-22px",
-            // marginBottom:"15px",
-            marginRight: "85%",
-            marginLeft: "5%",
-            padding: "15px",
-            paddingLeft: "10px",
-            textAlign: "center",
-            fontSize: "11px",
-            fontWeight: "bold",
-            //backgroundColor:"#D3D3D3",
-          }}
-        >
-          재난 선택
-        </div>
-        <div
-          style={{
-            //border:"0.5px solid black",
-            // borderLeft:"0.5px solid black",
-            //borderRight:"0.5px solid black",
-            //borderBottom:"0.5px solid black",
-            marginTop: "-22px",
-            // marginBottom:"15px",
-            marginRight: "85%",
-            marginLeft: "5%",
-            padding: "15px",
-            paddingLeft: "10px",
-            textAlign: "center",
-            fontSize: "11px",
-            fontWeight: "bold",
-            //backgroundColor:"#D3D3D3",
-          }}
-        >
-          <select name="disselect" size="5">
-            <option value="total">전체</option>
-            <option value="covid19">코로나19</option>
-            <option value="finedust">미세먼지</option>
-            <option value="fire">화재</option>z
-            <option value="earthquake">지진</option>
-            <option value="typhoon">태풍</option>
-            <option value="heavysnow">폭설</option>
-            <option value="heatwave">폭염</option>
-            <option value="heavyrain">폭우</option>
-            <option value="coldwave">한파</option>
-            <option value="gale">강풍</option>
-            <option value="etc">기타</option>
-          </select>
-        </div>
-        <div
-          style={{
-            marginTop: "-300px",
-            marginBottom: "1.0%",
-            marginRight: "40%",
-            marginLeft: "40%",
-            padding: "15px",
-            paddingLeft: "10px",
+            marginBottom: "10px",
             textAlign: "center",
             fontSize: "15px",
             fontWeight: "bold",
@@ -186,7 +80,10 @@ function DetailPage() {
             fontWeight: "bold",
           }}
         >
-          <button onClick={clickNa} style={{ backgroundColor: naturalColor }}>
+          <button
+            onClick={clickNa}
+            style={{ backgroundColor: naturalColor, marginRight: "-2px" }}
+          >
             자연재난
           </button>
           <button onClick={clickSo} style={{ backgroundColor: socialColor }}>
@@ -210,80 +107,57 @@ function DetailPage() {
             </div>
           </div>
         </div>
-
         <div
           style={{
-            border: "1px solid black",
-            borderRadius: "15px",
-            marginTop: "0%",
-            marginBottom: "1.5%",
-            marginRight: "18%",
-            marginLeft: "22%",
-            padding: "70px",
+            // border:"0.5px solid black",
+            position: "relative",
+            right: "-200px",
+            textAlign: "center",
+            padding: "15px",
             paddingLeft: "10px",
-            textAlign: "left",
-            fontSize: "10px",
+            fontSize: "13px",
             fontWeight: "bold",
-            backgroundColor: "#D3D3D3",
+            // backgroundColor:"#D3D3D3",
           }}
         >
-          *코로나19 현황*
+          <select
+            name="guselect"
+            value={district}
+            onChange={(e) => {
+              setDistrict(e.target.value);
+            }}
+          >
+            <option value="강서구">강서구</option>
+            <option value="종로구">종로구</option>
+            <option value="중구">중구</option>
+            <option value="용산구">용산구</option>
+            <option value="성동구">성동구</option>
+            <option value="광진구">광진구</option>
+            <option value="동대문구">동대문구</option>
+            <option value="중랑구">중랑구</option>
+            <option value="성북구">성북구</option>
+            <option value="강북구">강북구</option>
+            <option value="서대문구">서대문구</option>
+            <option value="도봉구">도봉구</option>
+            <option value="노원구">노원구</option>
+            <option value="은평구">은평구</option>
+            <option value="마포구">마포구</option>
+            <option value="양천구">양천구</option>
+            <option value="구로구">구로구</option>
+            <option value="금천구">금천구</option>
+            <option value="영등포구">영등포구</option>
+            <option value="동작구">동작구</option>
+            <option value="관악구">관악구</option>
+            <option value="서초구">서초구</option>
+            <option value="강남구">강남구</option>
+            <option value="송파구">송파구</option>
+            <option value="강동구">강동구</option>
+          </select>
         </div>
-        <div
-          style={{
-            border: "1px solid black",
-            borderRadius: "15px",
-            // marginTop:"-110px",
-            marginBottom: "15px",
-            marginRight: "18%",
-            marginLeft: "22%",
-            padding: "50px",
-            paddingLeft: "10px",
-            textAlign: "left",
-            fontSize: "10px",
-            fontWeight: "bold",
-            backgroundColor: "#D3D3D3",
-          }}
-        >
-          *행동 요령*
-        </div>
-        <div
-          style={{
-            border: "1px solid black",
-            borderRadius: "15px",
-            // marginTop:"-110px",
-            marginBottom: "15px",
-            marginRight: "18%",
-            marginLeft: "22%",
-            padding: "30px",
-            paddingLeft: "10px",
-            textAlign: "left",
-            fontSize: "10px",
-            fontWeight: "bold",
-            backgroundColor: "#D3D3D3",
-          }}
-        >
-          *비상 연락망*
-        </div>
-        <div
-          style={{
-            border: "1px solid black",
-            borderRadius: "15px",
-            // marginTop:"-110px",
-            marginBottom: "15px",
-            marginRight: "18%",
-            marginLeft: "22%",
-            padding: "30px",
-            paddingLeft: "10px",
-            textAlign: "left",
-            // textAlign:""
-            fontSize: "10px",
-            fontWeight: "bold",
-            backgroundColor: "#D3D3D3",
-          }}
-        >
-          *자치구 사이트 주소*
-        </div>
+        <StyledBox style={{ height: "100px" }}>*코로나19 현황*</StyledBox>
+        <StyledBox style={{ height: "80px" }}>*행동 요령*</StyledBox>
+        <StyledBox style={{ height: "50px" }}>*비상 연락망*</StyledBox>
+        <StyledBox style={{ height: "50px" }}>*자치구 사이트 주소*</StyledBox>
       </div>
       <Footer />
     </div>
