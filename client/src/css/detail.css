@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "paci";
+  src: url("../font/Pacifico-Regular.ttf");
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+#disaster {
+  width: 200px;
+  padding: 15px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #d3d3d3;
+}
+#guselect {
+  /* border:"0.5px solid black",*/
+  position: relative;
+  right: -135px;
+  text-align: center;
+  margin-right: 5px;
+  padding: 15px;
+  padding-left: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  /* backgroundColor:"#D3D3D3",*/
+}
+#calendar {
+  margin-top: -42px;
+  margin-left: 580px;
+  padding: 4px;
+}

@@ -11,12 +11,13 @@ import MapPage from "./router/MapPage";
      <BrowserRouter>
        {/* <Header />*/ }
        <div>
-         <Switch>
+    
+          <Switch>
            <Route exact path="/" component={MainPage} />
            <Route exact path="/map" component={MapPage} />
            <Route exact path="/detail/:district" component={DetailPage} />
          </Switch>
-       </div>
+       </div> 
        {/* <Footer /> */}
      </BrowserRouter>
    );
