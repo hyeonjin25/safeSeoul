@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { SERVER_API } from "../config/config";
+import { serverUrl } from "../config/config";
 import axios from "axios";
 import "../css/reset.css";
 import "../css/map.css";
@@ -36,7 +36,7 @@ function MapPage() {
 
     //백에 날짜와 구 정보 주고 2주간 가장 많이 발생한 재난종류 받기
     axios
-      .post(`${SERVER_API}/map/post/period`, { date, district })
+      .post(`${serverUrl}/map/post/period`, { date, district })
       .then((res) => {
         if (res.data) {
           console.log(res.data);
