@@ -10,7 +10,6 @@ import Calendar from '../router/Calendar'
 
 
 import "react-datepicker/dist/react-datepicker.css";
-import { eachHourOfInterval } from "date-fns";
 
 function DetailPage() {
   const params = useParams();
@@ -22,10 +21,13 @@ function DetailPage() {
   const [district, setDistrict] = useState(districtParam);
   const [natural, setNatural] = useState("block");
   const [social, setSocial] = useState("none");
-  const [naturalColor, setNaturalColor] = useState("#99cf96ec");
+  const [naturalColor, setNaturalColor] = useState("lightgreen");
   const [socialColor, setSocialColor] = useState("rgb(239, 239, 239)");
-   const StyledBox = styled.div`
-    width: 100%;
+  // const[startDate,setStartDate]=useState(new Date());
+  // const[endDate,setEndDate]=useState(new Date());
+const [color,setColor]=useState('grey')
+  const StyledBox = styled.div`
+    width: 750px;
     border: 1px solid black;
     border-radius: 15px;
     // margin-top:-110px;
@@ -36,29 +38,22 @@ function DetailPage() {
     fontsize: 10px;
     font-weight: bold;
     //background-color: #d3d3d3;
-
   `;
 
   const clickSo = (t) => {
     setNatural("none");
     setSocial("block");
-    setSocialColor("#99cf96ec");
+    setSocialColor("lightgreen");
     setNaturalColor("rgb(239, 239, 239)");
   };
 
   const clickNa = () => {
     setNatural("block");
     setSocial("none");
-    setNaturalColor("#99cf96ec");
+    setNaturalColor("lightgreen");
     setSocialColor("rgb(239, 239, 239)");
   };
   
-  const clickdis = () =>{
-    setNatural("none");
-    setSocial("block");
-    setSocialColor("#99cf96ec");
-    setNaturalColor("rgb(239, 239, 239)");
-  }
   return (
     <div>
       <Header />
@@ -74,7 +69,6 @@ function DetailPage() {
          textAlign:"center",
          fontSize:"15px",
          fontWeight:"bold",
-         fontFamily:"dohyeon"
         }}>
     
           <button 
@@ -87,9 +81,9 @@ function DetailPage() {
           onClick={clickSo} style={{ backgroundColor: socialColor }}>
             사회재난
           </button>
-          <div >
-            <div style={{ display: natural ,margin:"3px"}}>
-              <button value="finedust" >미세먼지</button>
+          <div>
+            <div style={{ display: natural }}>
+              <button value="finedust"  >미세먼지</button>
               <button value="earthquake">지진</button>
               <button value="typhoon">태풍</button>
               <button value="heavysnow">폭설</button>
@@ -99,7 +93,7 @@ function DetailPage() {
               <button value="gale">강풍</button>
               <button value="etc">기타</button>
             </div>
-            <div style={{ display: social,margin:"3px" }}>
+            <div style={{ display: social }}>
               <button value="covid19">코로나19</button>
               <button value="fire">화재</button>
             </div>
@@ -111,8 +105,7 @@ function DetailPage() {
             value={district}
             onChange={(e) => {
               setDistrict(e.target.value);
-            }
-          }
+            }}
           >
             <option value="강서구">강서구</option>
             <option value="종로구">종로구</option>
@@ -143,31 +136,16 @@ function DetailPage() {
         </div>
 
         <div id="calendar"> <Calendar></Calendar></div>
-        </div>
-       
-      <div id="menu">
-        <h1>추가 정보</h1>
       
-        <a href="https://ncv.kdca.go.kr/"> 백신정보 확인하러가기!</a>
-        <a href="https://www.weather.go.kr/w/index.do/"> 오늘의 날씨정보 확인하러가기!</a>
-
-        </div>
-        <div id="info">
-         <StyledBox style={{ height: "100px" }}>*코로나19 현황*</StyledBox>
+        
+        <StyledBox style={{ height: "100px" }}>*코로나19 현황*</StyledBox>
         <StyledBox style={{ height: "80px" }}>*행동 요령*</StyledBox>
         <StyledBox style={{ height: "50px" }}>*비상 연락망*</StyledBox>
         <StyledBox style={{ height: "50px" }}>*자치구 사이트 주소*</StyledBox>
-      
-      </div>
-    
-      <div id="Footer">
-      <Footer /> 
       </div>
      
-      
-      
+      <Footer />
     </div>
-     
   );
 }
 

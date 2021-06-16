@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "paci";
-  src: url("../font/Pacifico-Regular.ttf");
+  font-family: "dohyeon";
+  src: url("../font/DoHyeon-Regular.ttf");
 }
 
 #main {
@@ -9,6 +9,11 @@
   justify-content: center;
   align-items: center;
   margin: 30px;
+  font-family: "dohyeon";
+  font-weight: 100;
+}
+#guide {
+  margin: 3px;
 }
 #disaster {
   width: 200px;
@@ -16,9 +21,11 @@
   padding-left: 10px;
   margin-bottom: 10px;
   text-align: center;
-  font-size: 15px;
-  font-weight: bold;
-  background-color: #d3d3d3;
+  font-size: 20px;
+  font-weight: 200;
+  background-color: #7aac77ec;
+
+  /* background-color: #d3d3d3; */
 }
 #guselect {
   /* border:"0.5px solid black",*/
@@ -36,4 +43,30 @@
   margin-top: -42px;
   margin-left: 580px;
   padding: 4px;
+}
+
+#menu {
+  float: left;
+  width: 14%;
+  height: 370px;
+  font-family: "dohyeon";
+  font-weight: 100;
+  text-align: center;
+  border: 1px solid;
+}
+#menu a {
+  display: block;
+  margin-bottom: 15px;
+}
+#info {
+  float: left;
+  margin: 5%;
+
+  width: 65%;
+  font-family: "dohyeon";
+  font-weight: 100;
+}
+#Footer {
+  float: left;
+  width: 100%;
 }
