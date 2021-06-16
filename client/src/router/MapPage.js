@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { SERVER_API } from "../config/config";
+import axios from "axios";
 import "../css/reset.css";
 import "../css/map.css";
 import map from "../img/map.png";
@@ -7,16 +9,42 @@ import Footer from "../component/Footer";
 
 function MapPage() {
   const bub = useRef();
+  const [date, setDate] = useState("2020-01-01");
   const [offX, screenX] = useState(0);
   const [offY, screenY] = useState(0);
+  const [disaster, setDisaster] = useState("코로나19");
   const [disp, setDisp] = useState("hidden");
+
+  // 날짜 선택 이벤트
+  const dataChange = (e) => {
+    setDate(e.target.value);
+  };
 
   // 구역위에 마우스 올릴때 이벤트
   const mouseOver = (e) => {
     // console.log(bub.current.innerText);
+    // 말풍선 위치 변경
     screenX(e.nativeEvent.screenX);
     screenY(e.nativeEvent.screenY);
+
+    //console.log(e.target.alt);
+
+    //말풍선 보이게 하기
     setDisp("visible");
+
+    let district = e.target.alt;
+
+    //백에 날짜와 구 정보 주고 2주간 가장 많이 발생한 재난종류 받기
+    axios
+      .post(`${SERVER_API}/map/post/period`, { date, district })
+      .then((res) => {
+        if (res.data) {
+          console.log(res.data);
+          setDisaster(res.data);
+        } else {
+          console.log("실패");
+        }
+      });
   };
 
   // 구역위에서 마우스 나갔을 때 이벤트
@@ -27,6 +55,9 @@ function MapPage() {
   return (
     <div>
       <Header />
+      <div style={{ marginRight: "80px", marginTop: "20px", float: "right" }}>
+        date : <input type="date" value={date} onChange={dataChange} />
+      </div>
       <div
         style={{
           textAlign: "center",
@@ -48,7 +79,7 @@ function MapPage() {
             cursor: "default",
           }}
         >
-          코로나19
+          {disaster}
         </div>
         {/* 서울시 지도 이미지 */}
         <img
