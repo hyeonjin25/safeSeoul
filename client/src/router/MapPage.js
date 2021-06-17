@@ -27,20 +27,19 @@ function MapPage() {
     screenX(e.nativeEvent.screenX);
     screenY(e.nativeEvent.screenY);
 
-    //console.log(e.target.alt);
-
     //말풍선 보이게 하기
     setDisp("visible");
 
-    let district = e.target.alt;
-
     //백에 날짜와 구 정보 주고 2주간 가장 많이 발생한 재난종류 받기
     axios
-      .post(`${serverUrl}/map/post/period`, { date, district })
+      .post(`${serverUrl}/map/disaster`, {
+        startDate: date,
+        region_name: e.target.alt,
+      })
       .then((res) => {
         if (res.data) {
-          console.log(res.data);
-          setDisaster(res.data);
+          console.log(res.data.result);
+          setDisaster(res.data.result);
         } else {
           console.log("실패");
         }
