@@ -1,0 +1,22 @@
+{
+  "name": "safeseoul-server",
+  "version": "1.0.0",
+  "description": "server for safesoul",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hyeonjin25/safeSeoul.git"
+  },
+  "author": "hyeonjin25",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyeonjin25/safeSeoul/issues"
+  },
+  "homepage": "https://github.com/hyeonjin25/safeSeoul#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
