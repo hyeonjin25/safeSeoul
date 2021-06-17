@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { serverUrl } from "../config/config";
 import axios from "axios";
 import "../css/reset.css";
@@ -9,7 +9,7 @@ import Footer from "../component/Footer";
 
 function MapPage() {
   const bub = useRef();
-  const [date, setDate] = useState("2020-01-01");
+  const [date, setDate] = useState("2020-07-01");
   const [offX, screenX] = useState(0);
   const [offY, screenY] = useState(0);
   const [disaster, setDisaster] = useState("코로나19");
@@ -44,6 +44,9 @@ function MapPage() {
         } else {
           console.log("실패");
         }
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -56,7 +59,14 @@ function MapPage() {
     <div>
       <Header />
       <div style={{ marginRight: "80px", marginTop: "20px", float: "right" }}>
-        date : <input type="date" value={date} onChange={dataChange} />
+        date :{" "}
+        <input
+          type="date"
+          value={date}
+          onChange={dataChange}
+          max="2020-12-31"
+          min="2020-07-01"
+        />
       </div>
       <div
         style={{
