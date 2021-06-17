@@ -14,7 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={IntroPage} />
           <Route exact path="/map" component={MapPage} />
-          <Route exact path="/detail/:district" component={DetailPage} />
+          <Route exact path="/detail/:district/:date" component={DetailPage} />
         </Switch>
       </div>
       {/* <Footer /> */}
