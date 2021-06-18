@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "paci";
-  src: url("../font/Pacifico-Regular.ttf");
+  font-family: "dohyeon";
+  src: url("../font/DoHyeon-Regular.ttf");
 }
 
 #main {
@@ -9,6 +9,11 @@
   justify-content: center;
   align-items: center;
   margin: 30px;
+  font-family: "dohyeon";
+  font-weight: 100;
+}
+#guide {
+  margin: 3px;
 }
 #disaster {
   width: 200px;
@@ -16,24 +21,76 @@
   padding-left: 10px;
   margin-bottom: 10px;
   text-align: center;
-  font-size: 15px;
-  font-weight: bold;
-  background-color: #d3d3d3;
+  font-size: 20px;
+  font-weight: 200;
+  background-color: #7aac77ec;
+
+  /* background-color: #d3d3d3; */
 }
-#guselect {
-  /* border:"0.5px solid black",*/
-  position: relative;
-  right: -135px;
-  text-align: center;
-  margin-right: 5px;
-  padding: 15px;
-  padding-left: 10px;
+.select {
+  width: 370px;
+  height: 25%;
+  font-family: "dohyeon";
   font-size: 13px;
-  font-weight: bold;
-  /* backgroundColor:"#D3D3D3",*/
+  font-weight: 100;
+  border: 2px solid green;
+  border-radius: 3px;
+  float: right;
 }
-#calendar {
+.select h4 {
+  display: inline-block;
+  font-weight: 100;
+  font-size: 13px;
+  margin: 7px;
+}
+/* #calendar {
   margin-top: -42px;
   margin-left: 580px;
   padding: 4px;
+  float: right;
+} */
+
+#menu {
+  float: left;
+  width: 14%;
+  height: 370px;
+  font-family: "dohyeon";
+  font-weight: 100;
+  text-align: center;
+  border: 2px solid green;
+  background-color: rgb(187, 206, 187);
+}
+#menu a {
+  display: block;
+  margin-bottom: 15px;
+}
+#info {
+  float: left;
+  margin: 5%;
+
+  width: 65%;
+  font-family: "dohyeon";
+  font-weight: 100;
+}
+#info #covid {
+  width: 20%;
+  height: 90%;
+  border: 2px solid rgb(40, 102, 40);
+  border-radius: 4px;
+}
+#info p {
+  font-weight: 100;
+  font-size: 15px;
+}
+.emo {
+  font-family: "dohyeon";
+  float: right;
+  margin: 10px;
+}
+.emo img {
+  display: block;
+}
+#Footer {
+  float: left;
+  width: 100%;
 }
