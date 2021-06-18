@@ -7,7 +7,7 @@ import Footer from "../component/Footer";
 import { useParams } from "react-router";
 import styled from "styled-components";
 import Calendar from '../router/Calendar'
-
+import fire from "../img/fire.png";
 
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -107,7 +107,9 @@ function DetailPage() {
           </div>
         </div>
         </div>
-
+        <div id="img3">
+        <img src={fire}></img>
+        </div>
          <div class="select">
          <h2>구와 날짜를 선택해주세요.</h2> 
         <div id="guselect">

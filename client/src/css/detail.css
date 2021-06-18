@@ -28,7 +28,8 @@
   /* background-color: #d3d3d3; */
 }
 .select {
-  width: 370px;
+  width: 340px;
+  margin-top: -190px;
   height: 25%;
   font-family: "dohyeon";
   font-size: 13px;
@@ -52,6 +53,8 @@
 
 #menu {
   float: left;
+  display: inline;
+  margin-top: -180px;
   width: 14%;
   height: 370px;
   font-family: "dohyeon";
@@ -63,6 +66,19 @@
 #menu a {
   display: block;
   margin-bottom: 15px;
+}
+#img img {
+  width: 35%;
+  margin-left: 25%;
+}
+#img2 img {
+  width: 35%;
+  margin-left: 18%;
+}
+#img3 img {
+  width: 35%;
+  margin-left: 23%;
+  height: 13%;
 }
 #info {
   float: left;

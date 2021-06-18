@@ -8,7 +8,7 @@ import { useParams } from "react-router";
 import styled, { ThemeConsumer } from "styled-components";
 import Calendar from '../router/Calendar'
 import "react-datepicker/dist/react-datepicker.css";
-
+import campaign from "../img/campaign.jpg";
 function DetailPage() {
   const params = useParams();
 
@@ -101,6 +101,9 @@ function DetailPage() {
           </div>
         </div>
         </div>
+        <div id="img">
+        <img src={campaign}></img>
+        </div>
         <div class="select">
          <h2>구와 날짜를 선택해주세요.</h2> 
         <div id="guselect">
@@ -170,6 +173,7 @@ function DetailPage() {
         <a href="https://www.weather.go.kr/w/index.do/"> 오늘의 날씨정보 확인하러가기!</a>
 
         </div>
+      
         <div id="info">
          <StyledBox style={{ height: "100px" }}>
           *재난문자*
