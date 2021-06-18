@@ -1,12 +1,13 @@
 //import { render } from "@testing-library/react";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../css/reset.css";
 import "../css/detail.css";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import { useParams } from "react-router";
 import styled, { ThemeConsumer } from "styled-components";
-import Calendar from '../router/Calendar'
+import Calendar from "../router/Calendar";
 import "react-datepicker/dist/react-datepicker.css";
 import campaign from "../img/campaign.jpg";
 function DetailPage() {
@@ -21,10 +22,9 @@ function DetailPage() {
   const [natural, setNatural] = useState("block");
   const [social, setSocial] = useState("none");
   const [naturalColor, setNaturalColor] = useState("#99cf96ec");
-  const [socialColor, setSocialColor] = useState("rgb(239, 239, 239)");
+  const [socialColor, setSocialColor] = useState("rgb(212, 231, 205)");
   // const[startDate,setStartDate]=useState(new Date());
   // const[endDate,setEndDate]=useState(new Date());
-
 
   const dataChange = (e) => {
     setDate(e.target.value);
@@ -35,8 +35,8 @@ function DetailPage() {
     border-radius: 15px;
     // margin-top:-110px;
     margin-bottom: 15px;
-    padding: 30px;
-    padding-left: 10px;
+    padding: 20px;
+    padding-left: 30px;
     text-align: left;
     fontsize: 10px;
     font-weight: bold;
@@ -47,43 +47,56 @@ function DetailPage() {
     setNatural("none");
     setSocial("block");
     setSocialColor("#99cf96ec");
-    setNaturalColor("rgb(239, 239, 239)");
+    setNaturalColor("rgb(212, 231, 205)");
   };
 
   const clickNa = () => {
     setNatural("block");
     setSocial("none");
     setNaturalColor("#99cf96ec");
-    setSocialColor("rgb(239, 239, 239)");
+    setSocialColor("rgb(212, 231, 205)");
   };
   return (
     <div>
       <Header />
       <div id="main">
-        <div id="disaster">
-          '{district}' 재난문자</div>
-        <div id="guide">
-                재난을 선택해주세요.
-              </div>
+        <div id="disaster">'{district}' 재난문자</div>
+        <div id="guide">재난을 선택해주세요.</div>
         <div
+          id="buttons"
           style={{
+            width: 700,
             textAlign: "center",
             fontSize: "15px",
             fontWeight: "bold",
-            fontfamily:"dohyeon"
-          }}  >
+            fontfamily: "dohyeon",
+          }}
+        >
           <button
             onClick={clickNa}
-            style={{ backgroundColor: naturalColor, marginRight: "-2px" }}
+            style={{
+              backgroundColor: naturalColor,
+              width: "50%",
+              marginLeft: "-2px",
+            }}
           >
             자연재난
           </button>
-          <button onClick={clickSo} style={{ backgroundColor: socialColor }}>
+          <button
+            onClick={clickSo}
+            style={{
+              backgroundColor: socialColor,
+              width: "50%",
+              marginLeft: "-2px",
+            }}
+          >
             사회재난
           </button>
-          <div>
-            <div style={{ display: natural,margin:"3px" }}>
-              <button value="finedust">미세먼지</button>
+          <div id="disasters">
+            <div style={{ display: natural }}>
+              <button value="finedust" style={{ marginLeft: "-1px" }}>
+                미세먼지
+              </button>
               <button value="earthquake">지진</button>
               <button value="typhoon">태풍</button>
               <button value="heavysnow">폭설</button>
@@ -93,23 +106,27 @@ function DetailPage() {
               <button value="gale">강풍</button>
               <button value="etc">기타</button>
             </div>
-            <div style={{ display: social,margin:"3px" }}>
-            <button value="covid19"><a href="../중구/2020-07-22/detail_covid">코로나19</a></button>
-              
-              <button value="fire" ><a href="../마포구/2020-10-06/detail_fire">화재</a></button>
+            <div style={{ display: social }}>
+              <button value="covid19" style={{ width: "50%" }}>
+                <a href="../중구/2020-07-22/detail_covid">코로나19</a>
+              </button>
+              <button value="fire" style={{ width: "50%" }}>
+                <a href="../마포구/2020-10-06/detail_fire">화재</a>
+              </button>
             </div>
           </div>
         </div>
-        </div>
-        <div id="img">
+      </div>
+      <div id="img">
         <img src={campaign}></img>
-        </div>
-        <div class="select">
-         <h2>구와 날짜를 선택해주세요.</h2> 
-        <div id="guselect">
+      </div>
+      <div class="select">
+        <h2>구와 날짜를 선택해주세요.</h2>
+        <div id="guselect" style={{ display: "inline" }}>
           구선택
           <select
             name="guselect"
+            style={{ marginLeft: "10px" }}
             // value={district}
             // onChange={(e) => {
             //   setDistrict(e.target.value);
@@ -142,76 +159,74 @@ function DetailPage() {
             <option value="강동구">강동구</option>
           </select>
         </div>
-  
-    
-           <div id="calendar" >
-        <h4>시작일:</h4>
-        <input
-          type="date"
-           value={date}
-          onChange={dataChange}
-          max="2020-12-31"
-          min="2020-07-01"
-        />
-        <h4>~ 종료일:</h4> 
-        <input
-          type="date"
-           value={date}
-          onChange={dataChange}
-          max="2020-12-31"
-          min="2020-07-01"
-        />
-         <h6> *구와 날짜와 재난 모두를 선택해야 원하는 페이지로 넘어갑니다.*</h6> 
-      </div> 
-      </div>
-          {/* <Calendar></Calendar> */}
-        
-        <div id="menu">
-        <h1>추가 정보</h1>
-      
-        <a href="https://ncv.kdca.go.kr/"> 백신정보 확인하러가기!</a>
-        <a href="https://www.weather.go.kr/w/index.do/"> 오늘의 날씨정보 확인하러가기!</a>
 
+        <div id="calendar">
+          <input
+            type="date"
+            value={date}
+            onChange={dataChange}
+            max="2020-12-31"
+            min="2020-07-01"
+          />
+          <h4>~</h4>
+          <input
+            type="date"
+            value={date}
+            onChange={dataChange}
+            max="2020-12-31"
+            min="2020-07-01"
+          />
+          <h6>
+            *구와 날짜와 재난 모두를 선택해야 원하는 페이지로 넘어갑니다.*
+          </h6>
         </div>
-      
-        <div id="info">
-         <StyledBox style={{ height: "100px" }}>
+      </div>
+      {/* <Calendar></Calendar> */}
+
+      <div id="menu">
+        <h1>추가 정보</h1>
+
+        <a href="https://ncv.kdca.go.kr/"> 백신정보 확인하러가기!</a>
+        <a href="https://www.weather.go.kr/w/index.do/">
+          오늘의 날씨정보 확인하러가기!
+        </a>
+      </div>
+
+      <div id="info">
+        <StyledBox>
           *재난문자*
           <p>
-          2020/9/21 11:7
-[마포구청]162~164번 확진자발생. 역학조사 진행 중이며 이동동선은 추후 홈페이지 및 블로그 참고바랍니다. blog.naver.com/prmapo77
+            2020/9/21 11:7 [마포구청]162~164번 확진자발생. 역학조사 진행 중이며
+            이동동선은 추후 홈페이지 및 블로그 참고바랍니다.
+            blog.naver.com/prmapo77
           </p>
-           
-         </StyledBox>
-        <StyledBox style={{ height: "80px" }}> *행동 요령*
-            <p>
-            1. 비누로 30초 이상 꼼꼼하게 손 씻기
-2. 기침할 때 옷소매로 입과 코로 가리기
-3. 기침 등 호흡기 증상 시 마스크 착용하기
-            </p></StyledBox>
-        <StyledBox style={{ height: "50px" }}> *비상 연락망*
-            <p>
-            1339, 보건소,지역번호+120
-            </p></StyledBox>
-        <StyledBox style={{ height: "50px" }}>  *자치구 사이트 주소*
-            <p>
-           구 번호: 02-3153-8100
-
-           구 사이트:blog.naver.com/prmapo77 
-            </p></StyledBox>
-        </div>
-    
-    
-      <div id="Footer">
-      <Footer /> 
+        </StyledBox>
+        <StyledBox>
+          *행동 요령*
+          <p>
+            1. 비누로 30초 이상 꼼꼼하게 손 씻기 <br />
+            2. 기침할 때 옷소매로 입과 코로 가리기 <br />
+            3. 기침 등 호흡기 증상 시 마스크 착용하기
+          </p>
+        </StyledBox>
+        <StyledBox>
+          {" "}
+          *비상 연락망*
+          <p>1339, 보건소,지역번호+120</p>
+        </StyledBox>
+        <StyledBox>
+          *자치구 사이트 주소*
+          <p>
+            구 번호 : 02-3153-8100 <br />구 사이트 : blog.naver.com/prmapo77
+          </p>
+        </StyledBox>
       </div>
-     
-      
-      
+
+      <div id="Footer">
+        <Footer />
+      </div>
     </div>
-     
   );
 }
 
 export default DetailPage;
-

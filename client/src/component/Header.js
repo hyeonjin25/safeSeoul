@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div style={{ backgroundColor: "#45973fec" }}>
+    <div style={{ backgroundColor: "#4e9b4aec" }}>
       <div
         style={{
           padding: "20px",
