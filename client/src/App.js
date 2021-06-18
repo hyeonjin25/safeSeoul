@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
-import MainPage from "./router/MainPage";
+import IntroPage from "./router/IntroPage";
 import MapPage from "./router/MapPage";
 import DetailPage from "./router/DetailPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -12,9 +12,9 @@ function App() {
       {/* <Header /> */}
       <div>
         <Switch>
-          <Route exact path="/" component={MainPage} />
+          <Route exact path="/" component={IntroPage} />
           <Route exact path="/map" component={MapPage} />
-          <Route exact path="/detail/:district" component={DetailPage} />
+          <Route exact path="/detail/:district/:date" component={DetailPage} />
         </Switch>
       </div>
       {/* <Footer /> */}

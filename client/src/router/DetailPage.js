@@ -6,18 +6,19 @@ import Header from "../component/Header";
 import Footer from "../component/Footer";
 import { useParams } from "react-router";
 import styled, { ThemeConsumer } from "styled-components";
-import Calendar from '../router/Calendar'
-
+import Calendar from "../router/Calendar";
 
 import "react-datepicker/dist/react-datepicker.css";
 
 function DetailPage() {
   const params = useParams();
 
-  // 지도에서 선택한 구 이름
+  // 지도에서 선택한 구 이름과 날짜
   const districtParam = params.district;
+  const dateParam = params.date;
 
   const [district, setDistrict] = useState(districtParam);
+  const [date, setDate] = useState(dateParam);
   const [natural, setNatural] = useState("block");
   const [social, setSocial] = useState("none");
   const [naturalColor, setNaturalColor] = useState("lightgreen");
@@ -25,7 +26,7 @@ function DetailPage() {
   // const[startDate,setStartDate]=useState(new Date());
   // const[endDate,setEndDate]=useState(new Date());
 
-const [color,setColor]=useState('grey')
+  const [color, setColor] = useState("grey");
   const StyledBox = styled.div`
     width: 750px;
     border: 1px solid black;
@@ -56,31 +57,29 @@ const [color,setColor]=useState('grey')
   return (
     <div>
       <Header />
-      <div id="main"
-      >
-        <div id="disaster"  >
-          '{district}' 재난문자
-        </div>
+      <div id="main">
+        <div id="disaster">'{district}' 재난문자</div>
 
-        <div style={{
-         textAlign:"center",
-         fontSize:"15px",
-         fontWeight:"bold",
-        }}>
-          <button 
+        <div
+          style={{
+            textAlign: "center",
+            fontSize: "15px",
+            fontWeight: "bold",
+          }}
+        >
+          <button
             onClick={clickNa}
             style={{ backgroundColor: naturalColor, marginRight: "-2px" }}
           >
             자연재난
           </button>
-          <button 
-          onClick={clickSo} style={{ backgroundColor: socialColor }}>
+          <button onClick={clickSo} style={{ backgroundColor: socialColor }}>
             사회재난
           </button>
           <div>
             <div style={{ display: natural }}>
-              <button value="finedust"  >미세먼지</button>
-              <button value="earthquake" >지진</button>
+              <button value="finedust">미세먼지</button>
+              <button value="earthquake">지진</button>
               <button value="typhoon">태풍</button>
               <button value="heavysnow">폭설</button>
               <button value="heatwave">폭염</button>
@@ -95,7 +94,7 @@ const [color,setColor]=useState('grey')
             </div>
           </div>
         </div>
-        <div id="guselect" >
+        <div id="guselect">
           <select
             name="guselect"
             value={district}
@@ -131,15 +130,17 @@ const [color,setColor]=useState('grey')
           </select>
         </div>
 
-        <div id="calendar"> <Calendar></Calendar></div>
-      
-        
+        <div id="calendar">
+          {" "}
+          <Calendar></Calendar>
+        </div>
+
         <StyledBox style={{ height: "100px" }}>*코로나19 현황*</StyledBox>
         <StyledBox style={{ height: "80px" }}>*행동 요령*</StyledBox>
         <StyledBox style={{ height: "50px" }}>*비상 연락망*</StyledBox>
         <StyledBox style={{ height: "50px" }}>*자치구 사이트 주소*</StyledBox>
       </div>
-     
+
       <Footer />
     </div>
   );
