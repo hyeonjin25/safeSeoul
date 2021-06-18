@@ -5,30 +5,30 @@ import "../css/detail.css";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import { useParams } from "react-router";
-import styled, { ThemeConsumer } from "styled-components";
+import styled from "styled-components";
 import Calendar from '../router/Calendar'
+
+
+
 import "react-datepicker/dist/react-datepicker.css";
+
 
 function DetailPage() {
   const params = useParams();
 
-  // 지도에서 선택한 구 이름과 날짜
+  // 지도에서 선택한 구 이름
   const districtParam = params.district;
   const dateParam = params.date;
 
-  const [district, setDistrict] = useState(districtParam);
   const [date, setDate] = useState(dateParam);
+  const [district, setDistrict] = useState(districtParam);
   const [natural, setNatural] = useState("block");
   const [social, setSocial] = useState("none");
   const [naturalColor, setNaturalColor] = useState("#99cf96ec");
   const [socialColor, setSocialColor] = useState("rgb(239, 239, 239)");
-  // const[startDate,setStartDate]=useState(new Date());
-  // const[endDate,setEndDate]=useState(new Date());
-
-
   const dataChange = (e) => {
     setDate(e.target.value);
-  };
+  }; 
   const StyledBox = styled.div`
     width: 100%;
     border: 2px solid green;
@@ -41,6 +41,7 @@ function DetailPage() {
     fontsize: 10px;
     font-weight: bold;
     //background-color: #d3d3d3;
+
   `;
 
   const clickSo = (t) => {
@@ -56,34 +57,39 @@ function DetailPage() {
     setNaturalColor("#99cf96ec");
     setSocialColor("rgb(239, 239, 239)");
   };
+  
+
   return (
     <div>
       <Header />
-      <div id="main">
-        <div id="disaster">
-          '{district}' 재난문자</div>
-        <div id="guide">
+      <div id="main" >
+        <div id="disaster"  >
+        '{district}'  재난문자     
+              </div>
+              <div id="guide">
                 재난을 선택해주세요.
               </div>
-        <div
-          style={{
-            textAlign: "center",
-            fontSize: "15px",
-            fontWeight: "bold",
-            fontfamily:"dohyeon"
-          }}  >
-          <button
+
+        <div style={{
+         textAlign:"center",
+         fontSize:"15px",
+         fontWeight:"bold",
+         fontFamily:"dohyeon"
+        }}>
+    
+          <button 
             onClick={clickNa}
-            style={{ backgroundColor: naturalColor, marginRight: "-2px" }}
+            style={{ backgroundColor: naturalColor, marginRight: "-2px",  }}
           >
             자연재난
           </button>
-          <button onClick={clickSo} style={{ backgroundColor: socialColor }}>
+          <button 
+          onClick={clickSo} style={{ backgroundColor: socialColor }}>
             사회재난
           </button>
-          <div>
-            <div style={{ display: natural,margin:"3px" }}>
-              <button value="finedust">미세먼지</button>
+          <div >
+            <div style={{ display: natural ,margin:"3px"}}>
+              <button value="finedust" >미세먼지</button>
               <button value="earthquake">지진</button>
               <button value="typhoon">태풍</button>
               <button value="heavysnow">폭설</button>
@@ -94,23 +100,24 @@ function DetailPage() {
               <button value="etc">기타</button>
             </div>
             <div style={{ display: social,margin:"3px" }}>
-            <button value="covid19"><a href="../중구/2020-07-22/detail_covid">코로나19</a></button>
+            <button value="covid19"><a href="../../중구/2020-07-22/detail_covid">코로나19</a></button>
               
-              <button value="fire" ><a href="../마포구/2020-10-06/detail_fire">화재</a></button>
+              <button value="fire" >화재</button>
             </div>
           </div>
         </div>
         </div>
-        <div class="select">
+
+         <div class="select">
          <h2>구와 날짜를 선택해주세요.</h2> 
         <div id="guselect">
           구선택
           <select
             name="guselect"
-            // value={district}
-            // onChange={(e) => {
-            //   setDistrict(e.target.value);
-            //}}
+            value={district}
+            onChange={(e) => {
+              setDistrict(e.target.value);
+            }}
           >
             <option value="강서구">강서구</option>
             <option value="종로구">종로구</option>
@@ -139,13 +146,12 @@ function DetailPage() {
             <option value="강동구">강동구</option>
           </select>
         </div>
-  
-    
-           <div id="calendar" >
+
+        <div id="calendar"> 
         <h4>시작일:</h4>
         <input
           type="date"
-           value={date}
+          value={date}
           onChange={dataChange}
           max="2020-12-31"
           min="2020-07-01"
@@ -153,48 +159,60 @@ function DetailPage() {
         <h4>~ 종료일:</h4> 
         <input
           type="date"
-           value={date}
+          value={date}
           onChange={dataChange}
           max="2020-12-31"
           min="2020-07-01"
         />
          <h6> *구와 날짜와 재난 모두를 선택해야 원하는 페이지로 넘어갑니다.*</h6> 
-      </div> 
-      </div>
-          {/* <Calendar></Calendar> */}
-        
-        <div id="menu">
+      </div> </div>
+       
+      <div id="menu">
         <h1>추가 정보</h1>
       
         <a href="https://ncv.kdca.go.kr/"> 백신정보 확인하러가기!</a>
         <a href="https://www.weather.go.kr/w/index.do/"> 오늘의 날씨정보 확인하러가기!</a>
 
         </div>
+        {/* <div class="emo">
+        우리 같이 힘내요!
+        <img src={arrow} width="100px" height="100px"></img>
+    
+      </div> */}
         <div id="info">
-         <StyledBox style={{ height: "100px" }}>
-          *재난문자*
-          <p>
-          2020/9/21 11:7
-[마포구청]162~164번 확진자발생. 역학조사 진행 중이며 이동동선은 추후 홈페이지 및 블로그 참고바랍니다. blog.naver.com/prmapo77
-          </p>
-           
-         </StyledBox>
-        <StyledBox style={{ height: "80px" }}> *행동 요령*
+        <StyledBox style={{ height: "120px" }}>
+            *재난문자 내용*
             <p>
-            1. 비누로 30초 이상 꼼꼼하게 손 씻기
-2. 기침할 때 옷소매로 입과 코로 가리기
-3. 기침 등 호흡기 증상 시 마스크 착용하기
-            </p></StyledBox>
-        <StyledBox style={{ height: "50px" }}> *비상 연락망*
+            2020/10/6 17:36
+(마포구)
+[마포구청] 오늘 16:55경 마포역(5호선) 인근 건물 화재 발생. 마포역 양방향 무정차 통과중. 주변 이동시 주의하시기 바랍니다. 
+            </p>
             <p>
-            1339, 보건소,지역번호+120
-            </p></StyledBox>
-        <StyledBox style={{ height: "50px" }}>  *자치구 사이트 주소*
+            2020/10/6 18:32
+[마포구청] 마포역(5호선) 인근 건물 화재 발생 관련 지하철 무정차 운행이 금일 18시 22분부로 정상화되었습니다. 열차 이용에 참고하시기 바랍니다.   </p>
+        </StyledBox>
+        <StyledBox style={{ height: "100px" }}>
+            *행동 요령*
+            <p>
+            1. 최초 목격자는 ‘불이야＇를 외치고, 화재경보 비상벨을 눌러 화재 발생 알리기.
+            2. 화재를 알린 후 곧바로 119에 신고하기.
+            3. 젖은 수건이나 옷깃 등으로 코와 입을 막고 자세를 낮춰 지정된 장소로 대피 하기
+            </p>
+        </StyledBox>
+        <StyledBox style={{ height: "50px" }}>
+            *비상 연락망*
+            <p>
+                119
+            </p>
+            </StyledBox>
+        <StyledBox style={{ height: "50px" }}>
+            *자치구 사이트 주소*
             <p>
            구 번호: 02-3153-8100
 
            구 사이트:blog.naver.com/prmapo77 
-            </p></StyledBox>
+            </p>
+            </StyledBox>
         </div>
     
     
@@ -210,4 +228,3 @@ function DetailPage() {
 }
 
 export default DetailPage;
-
