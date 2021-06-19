@@ -1,15 +1,14 @@
 //import { render } from "@testing-library/react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router";
+import Inform from "./Inform";
 import "../css/reset.css";
 import "../css/detail.css";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
-import { useParams } from "react-router";
-import styled, { ThemeConsumer } from "styled-components";
-import Calendar from "../router/Calendar";
-import "react-datepicker/dist/react-datepicker.css";
-import campaign from "../img/campaign.jpg";
+import covidimg from "../img/campaign.jpg";
+import fireimg from "../img/fire.png";
+
 function DetailPage() {
   const params = useParams();
 
@@ -18,30 +17,22 @@ function DetailPage() {
   const dateParam = params.date;
 
   const [district, setDistrict] = useState(districtParam);
-  const [date, setDate] = useState(dateParam);
+  const [startdate, setStartdate] = useState(dateParam);
+  const [enddate, setEnddate] = useState(dateParam);
   const [natural, setNatural] = useState("block");
   const [social, setSocial] = useState("none");
+  const [poster, setPoster] = useState(covidimg);
+  const [disaster, setDisaster] = useState("init");
   const [naturalColor, setNaturalColor] = useState("#99cf96ec");
   const [socialColor, setSocialColor] = useState("rgb(212, 231, 205)");
-  // const[startDate,setStartDate]=useState(new Date());
-  // const[endDate,setEndDate]=useState(new Date());
 
-  const dataChange = (e) => {
-    setDate(e.target.value);
+  const startdateChange = (e) => {
+    setStartdate(e.target.value);
   };
-  const StyledBox = styled.div`
-    width: 100%;
-    border: 2px solid green;
-    border-radius: 15px;
-    // margin-top:-110px;
-    margin-bottom: 15px;
-    padding: 20px;
-    padding-left: 30px;
-    text-align: left;
-    fontsize: 10px;
-    font-weight: bold;
-    //background-color: #d3d3d3;
-  `;
+
+  const enddateChange = (e) => {
+    setEnddate(e.target.value);
+  };
 
   const clickSo = (t) => {
     setNatural("none");
@@ -56,6 +47,23 @@ function DetailPage() {
     setNaturalColor("#99cf96ec");
     setSocialColor("rgb(212, 231, 205)");
   };
+
+  const onfire = () => {
+    setPoster(fireimg);
+    setDisaster("fire");
+    setDistrict("마포구");
+    setStartdate("2020-10-06");
+    setEnddate("2020-10-06");
+  };
+
+  const oncovid = () => {
+    setPoster(covidimg);
+    setDisaster("covid");
+    setDistrict("중구");
+    setStartdate("2020-07-22");
+    setEnddate("2020-08-06");
+  };
+
   return (
     <div>
       <Header />
@@ -107,20 +115,24 @@ function DetailPage() {
               <button value="etc">기타</button>
             </div>
             <div style={{ display: social }}>
-              <button value="covid19" style={{ width: "50%" }}>
-                <a href="../중구/2020-07-22/detail_covid">코로나19</a>
+              <button
+                value="covid19"
+                onClick={oncovid}
+                style={{ width: "50%" }}
+              >
+                코로나19
               </button>
-              <button value="fire" style={{ width: "50%" }}>
-                <a href="../마포구/2020-10-06/detail_fire">화재</a>
+              <button value="fire" onClick={onfire} style={{ width: "50%" }}>
+                화재
               </button>
             </div>
           </div>
         </div>
       </div>
       <div id="img">
-        <img src={campaign}></img>
+        <img src={poster}></img>
       </div>
-      <div class="select">
+      <div className="select">
         <h2>구와 날짜를 선택해주세요.</h2>
         <div id="guselect" style={{ display: "inline" }}>
           구선택
@@ -163,16 +175,16 @@ function DetailPage() {
         <div id="calendar">
           <input
             type="date"
-            value={date}
-            onChange={dataChange}
+            value={startdate}
+            onChange={startdateChange}
             max="2020-12-31"
             min="2020-07-01"
           />
           <h4>~</h4>
           <input
             type="date"
-            value={date}
-            onChange={dataChange}
+            value={enddate}
+            onChange={enddateChange}
             max="2020-12-31"
             min="2020-07-01"
           />
@@ -181,46 +193,16 @@ function DetailPage() {
           </h6>
         </div>
       </div>
-      {/* <Calendar></Calendar> */}
 
       <div id="menu">
         <h1>추가 정보</h1>
-
         <a href="https://ncv.kdca.go.kr/"> 백신정보 확인하러가기!</a>
         <a href="https://www.weather.go.kr/w/index.do/">
           오늘의 날씨정보 확인하러가기!
         </a>
       </div>
 
-      <div id="info">
-        <StyledBox>
-          *재난문자*
-          <p>
-            2020/9/21 11:7 [마포구청]162~164번 확진자발생. 역학조사 진행 중이며
-            이동동선은 추후 홈페이지 및 블로그 참고바랍니다.
-            blog.naver.com/prmapo77
-          </p>
-        </StyledBox>
-        <StyledBox>
-          *행동 요령*
-          <p>
-            1. 비누로 30초 이상 꼼꼼하게 손 씻기 <br />
-            2. 기침할 때 옷소매로 입과 코로 가리기 <br />
-            3. 기침 등 호흡기 증상 시 마스크 착용하기
-          </p>
-        </StyledBox>
-        <StyledBox>
-          {" "}
-          *비상 연락망*
-          <p>1339, 보건소,지역번호+120</p>
-        </StyledBox>
-        <StyledBox>
-          *자치구 사이트 주소*
-          <p>
-            구 번호 : 02-3153-8100 <br />구 사이트 : blog.naver.com/prmapo77
-          </p>
-        </StyledBox>
-      </div>
+      <Inform disaster={disaster} />
 
       <div id="Footer">
         <Footer />
