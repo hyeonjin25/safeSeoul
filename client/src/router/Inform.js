@@ -54,7 +54,7 @@ function Inform({ disaster }) {
   } else if (disaster == "fire") {
     return (
       <div id="info">
-        <StyledBox style={{ height: "120px" }}>
+        <StyledBox>
           *재난문자 내용*
           <p>
             2020/10/6 17:36 (마포구) [마포구청] 오늘 16:55경 마포역(5호선) 인근
@@ -67,7 +67,7 @@ function Inform({ disaster }) {
             이용에 참고하시기 바랍니다.{" "}
           </p>
         </StyledBox>
-        <StyledBox style={{ height: "100px" }}>
+        <StyledBox>
           *행동 요령*
           <p>
             1. 최초 목격자는 ‘불이야＇를 외치고, 화재경보 비상벨을 눌러 화재
@@ -76,11 +76,11 @@ function Inform({ disaster }) {
             하기
           </p>
         </StyledBox>
-        <StyledBox style={{ height: "50px" }}>
+        <StyledBox>
           *비상 연락망*
           <p>119</p>
         </StyledBox>
-        <StyledBox style={{ height: "50px" }}>
+        <StyledBox>
           *자치구 사이트 주소*
           <p>구 번호: 02-3153-8100 구 사이트:blog.naver.com/prmapo77</p>
         </StyledBox>
@@ -89,7 +89,7 @@ function Inform({ disaster }) {
   } else if (disaster == "covid") {
     return (
       <div id="info">
-        <StyledBox style={{ height: "120px" }}>
+        <StyledBox>
           *재난문자 내용*
           <p>
             2020/7/22 18:11 [중구청]18번째확진자 관련,7.12(일) 13:15~18:30
@@ -102,18 +102,18 @@ function Inform({ disaster }) {
             바랍니다.(junggu.seoul.kr)
           </p>
         </StyledBox>
-        <StyledBox style={{ height: "100px" }}>
+        <StyledBox>
           *행동 요령*
           <p>
             1. 비누로 30초 이상 꼼꼼하게 손 씻기 2. 기침할 때 옷소매로 입과 코로
             가리기 3. 기침 등 호흡기 증상 시 마스크 착용하기
           </p>
         </StyledBox>
-        <StyledBox style={{ height: "50px" }}>
+        <StyledBox>
           *비상 연락망*
           <p>1339, 보건소,지역번호+120</p>
         </StyledBox>
-        <StyledBox style={{ height: "50px" }}>
+        <StyledBox>
           *자치구 사이트 주소*
           <p>구 번호: 02-3396-4000 구 사이트:http://www.junggu.seoul.kr</p>
         </StyledBox>
