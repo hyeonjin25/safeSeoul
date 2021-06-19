@@ -78,9 +78,10 @@
 }
 
 #menu {
-  float: left;
+  position: absolute;
+  top: 350px;
+  left: 0px;
   display: inline;
-  margin-top: -180px;
   width: 14%;
   height: 370px;
   font-family: "dohyeon";
@@ -95,7 +96,7 @@
 }
 #img img {
   width: 35%;
-  margin-left: 25%;
+  margin-left: 250px;
 }
 #img2 img {
   width: 35%;
@@ -107,9 +108,7 @@
   height: 13%;
 }
 #info {
-  float: left;
-  margin: 5%;
-  margin-top: 10px;
+  margin: 20px auto;
   width: 65%;
   font-family: "dohyeon";
   font-weight: 100;
